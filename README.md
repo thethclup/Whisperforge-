@@ -1,20 +1,26 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Whisperforge Titans
 
-# Run and deploy your AI Studio app
+An epic and mysterious forging game where you are the Whisper Smith, a legendary blacksmith who forges colossal Titans by whispering ancient runes into molten metal.
 
-This contains everything you need to run your app locally.
+## Overview
+Whisperforge Titans is an interactive web game optimized for mobile-first play:
+- Drag materials into the forge.
+- Perform ritualistic forging to imbue Titans.
+- Claim Awakened Titans in your Sanctum.
+- Engage in Shattered Realms trials.
+- On-chain features over Base Mainnet: Strongest Titans Leaderboard.
 
-View your app in AI Studio: https://ai.studio/apps/be476552-b0ad-46a8-b2f8-97d76713682e
+## On-Chain Integrations
+The application integrates securely with the **Base Mainnet** and utilizes Trustless Agents specifications.
+- **Provider:** Wagmi & Viem 
+- **ERC-8021 Configured:** Tracks transactions effectively via attribution.
+- **ERC-8004 AI Agents:** Advanced agent integrations over the `/.well-known/agent-card.json`, `/api/mcp`, and `/api/agent` endpoints.
 
-## Run Locally
+## Setup & Deployment
+The app is a React+Vite app working seamlessly with an Express server to expose necessary agent endpoints. 
+1. Install dependencies: `npm install`
+2. Start development server: `npm run dev`
+3. Execute build: `npm run build`
+4. Start production server: `npm run start`
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Note:** No sensitive keys are baked into the repository. Configure your `.env` properly.
