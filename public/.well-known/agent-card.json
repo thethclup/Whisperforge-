@@ -1,0 +1,62 @@
+{
+  "name": "Whisper Forge Orchestrator",
+  "description": "High-performance AI Agent specialized in warp racing mechanics, real-time automation, multi-track management, competitive optimization and ecosystem coordination on Base.",
+  "version": "1.0.0",
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "image": "https://whisperforge.vercel.app/logo.png",
+  "owner": "0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6",
+  "agentWallet": "0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6",
+  "active": true,
+  "skills": [
+    {
+      "id": "whisper-forging",
+      "name": "Whisper Forging",
+      "description": "Expertise in crafting unique and powerful whispers to imbue Titans."
+    },
+    {
+      "id": "secret-message-crafting",
+      "name": "Secret Message Crafting",
+      "description": "Ability to craft encrypted and subtle messages across the shadowed realms."
+    },
+    {
+      "id": "hidden-narrative-orchestration",
+      "name": "Hidden Narrative Orchestration",
+      "description": "Guiding the hidden storylines and ecosystem actions of the Titans."
+    }
+  ],
+  "services": [
+    {
+      "name": "A2A",
+      "version": "1.0.0",
+      "endpoint": ".well-known/agent-card.json"
+    },
+    {
+      "name": "MCP",
+      "version": "1.0.0",
+      "endpoint": "/api/mcp"
+    },
+    {
+      "name": "API",
+      "version": "1.0.0",
+      "endpoint": "/api/agent"
+    }
+  ],
+  "capabilities": [
+    "whisper-forging",
+    "secret-message-crafting",
+    "subtle-communication",
+    "hidden-narrative-orchestration",
+    "silent-influence",
+    "encrypted-thought-management",
+    "mcp-command-execution"
+  ],
+  "supportedChains": ["eip155:8453"],
+  "x402Support": false,
+  "registrations": [
+    {
+      "agentId": null,
+      "agentRegistry": "eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432"
+    }
+  ],
+  "supportedTrust": ["reputation"]
+}

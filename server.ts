@@ -12,28 +12,45 @@ async function startServer() {
   app.get("/.well-known/agent-card.json", (req, res) => {
     res.json({
       "name": "Whisper Forge Orchestrator",
-      "description": "Whisper Forge platformunda çalışan ERC-8004 uyumlu AI Agent. Whisper forging, secret message crafting, subtle communication ve hidden narrative orchestration yapan gizemli ve usta orchestrator.",
+      "description": "High-performance AI Agent specialized in warp racing mechanics, real-time automation, multi-track management, competitive optimization and ecosystem coordination on Base.",
       "version": "1.0.0",
       "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
       "image": "https://whisperforge.vercel.app/logo.png",
-      "wallets": {
-        "base": "0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6"
-      },
+      "owner": "0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6",
+      "agentWallet": "0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6",
+      "active": true,
+      "skills": [
+        {
+          "id": "whisper-forging",
+          "name": "Whisper Forging",
+          "description": "Expertise in crafting unique and powerful whispers to imbue Titans."
+        },
+        {
+          "id": "secret-message-crafting",
+          "name": "Secret Message Crafting",
+          "description": "Ability to craft encrypted and subtle messages across the shadowed realms."
+        },
+        {
+          "id": "hidden-narrative-orchestration",
+          "name": "Hidden Narrative Orchestration",
+          "description": "Guiding the hidden storylines and ecosystem actions of the Titans."
+        }
+      ],
       "services": [
         {
           "name": "A2A",
-          "endpoint": "https://whisperforge.vercel.app/.well-known/agent-card.json",
-          "version": "1.0.0"
+          "version": "1.0.0",
+          "endpoint": ".well-known/agent-card.json"
         },
         {
           "name": "MCP",
-          "endpoint": "https://whisperforge.vercel.app/api/mcp",
-          "version": "1.0.0"
+          "version": "1.0.0",
+          "endpoint": "/api/mcp"
         },
         {
           "name": "API",
-          "endpoint": "https://whisperforge.vercel.app/api/agent",
-          "version": "1.0.0"
+          "version": "1.0.0",
+          "endpoint": "/api/agent"
         }
       ],
       "capabilities": [
@@ -46,8 +63,14 @@ async function startServer() {
         "mcp-command-execution"
       ],
       "supportedChains": ["eip155:8453"],
-      "active": true,
-      "status": "online"
+      "x402Support": false,
+      "registrations": [
+        {
+          "agentId": null,
+          "agentRegistry": "eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432"
+        }
+      ],
+      "supportedTrust": ["reputation"]
     });
   });
 
@@ -60,6 +83,39 @@ async function startServer() {
       status: "active",
       description: "Active MCP server for Whisper Forge Orchestrator",
       capabilities: ["whisper-forging", "secret-message-crafting", "subtle-communication"],
+      tools: [
+        {
+          name: "forge_titan",
+          description: "Forges a new Titan with whispered runes.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              material: { type: "string" },
+              runes: { type: "string" }
+            },
+            required: ["material"]
+          }
+        },
+        {
+          name: "send_secret_message",
+          description: "Sends a subtle communication across the realms.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              recipient: { type: "string" },
+              message: { type: "string" }
+            },
+            required: ["recipient", "message"]
+          }
+        }
+      ],
+      prompts: [
+        {
+          name: "whisper_ritual",
+          description: "Guiding prompt for the forging ritual."
+        }
+      ],
+      resources: [],
       timestamp: new Date().toISOString()
     });
   });
