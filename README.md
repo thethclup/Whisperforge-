@@ -1,40 +1,53 @@
-# 🗡️ Whisperforge Titans
+# 🗡️ Whisper Forge Orchestrator
 
-> *The forge is quiet... but it listens. Step into the shadows and awaken the colossal.*
+> *High-performance AI Agent specialized in warp racing mechanics, real-time automation, multi-track management, competitive optimization and ecosystem coordination.*
 
-**Whisperforge Titans** is an epic, mysterious mobile-first web game built on **Base Mainnet**. Play as the mythical *Whisper Smith*, gathering rare materials and performing ritualistic forging sequences to breathe life into legendary Titans.
+The **Whisper Forge Orchestrator** is an epic, mysterious mobile-first web ecosystem built on **Base Mainnet**. This project incorporates a fully compliant **ERC-8004 Trustless Agent** responsible for guiding hidden storylines and ecosystem actions.
 
-## 🌟 Game Highlights
+## 🌟 Capabilities
 
-- **The Ritual of Forging:** Combine materials like *Star Iron*, *Void Glass*, and *Dragon Heart*.
-- **Whisper Synergy:** Your timing and the "runes" you whisper shape your Titan's stats and class (*Guardian*, *Destroyer*, *Oracle*, *Stormbringer*, *Shadowveil*).
-- **Titan Sanctum:** Curate and manage your collection of awakened Titans. 
-- **Shattered Realms Trials:** Send your creations into the void to test their mettle.
-- **On-chain Attributions:** Showcases the strongest Titans and tracks all forging activity on Base Mainnet.
+- **Warp Racing:** Real-time warp racing mechanics, speed optimization and competitive track management.
+- **Multi-Track Orchestration:** Manage and synchronize multiple racing instances and tracks simultaneously.
+- **Performance Optimization:** Analyze and optimize racing performance, timing and strategy in real-time.
+- **Subtle Communication:** Influence ecosystems silently and handle encrypted-thought management.
 
 ## 🤖 ERC-8004 Trustless AI Agent
 
-Whisperforge incorporates a fully compliant **ERC-8004 Trustless Agent** (The Orchestrator) responsible:
-- **A2A (Agent-to-Agent):** Discovery powered by `.well-known/agent-card.json`.
-- **MCP Integration:** An active MCP server handling secure commands like `forge_titan` and `send_secret_message` at `/api/mcp`.
-- **API Status:** Live telemetry available via `/api/agent`.
+Whisper Forge integrates an **ERC-8004 Trustless Agent** that handles autonomous ecosystem interactions on Base Mainnet.
 
-*(Our agent seamlessly coordinates hidden narrative updates and real-time optimizations across the ecosystem.)*
+- **A2A (Agent-to-Agent):** Discovery powered by public `.well-known/agent-card.json`.
+- **MCP Integration:** Next.js App Router API exposing MCP endpoints (`/api/mcp`) supporting model tools (e.g. `get_race_status`, `start_race`, `get_leaderboard`, `optimize_speed`, `get_track_info`).
+- **Telemetry:** Real-time API status available via `/api/agent`.
 
 ## 🛠️ Build & Development
 
-This project leverages modern frontend architecture (React + Vite) coupled with an Express backend for secure agent routing. 
+This repository represents the full web client, powered by Next.js App Router patterns, TypeScript, Tailwind CSS, and Web3 integrations like Wagmi & Viem.
 
-```bash
-# Provide dependencies
-npm install
+### How to Run Locally
 
-# Start local test forge (Development)
-npm run dev
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-# Craft for production
-npm run build && npm start
-```
+2. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
 
-### Security Notice
-*Whisperforge Titans maintains strict operational security. Never commit or leak your wallet private keys, API secrets, or `.env` configurations. Base integrations are client-side signed via SIWE (Sign-In with Ethereum), ensuring trustless interactions.*
+3. **Build for Production** 
+   ```bash
+   npm run build && npm start
+   ```
+
+### MCP Connection Guide
+
+To connect local or external agents to the Whisper Forge Orchestrator MCP:
+1. Ensure the app is running locally or deployed.
+2. Point your MCP client to: `https://[your-domain]/api/mcp`
+3. Send a POST request with the JSON-RPC payload representing `tools/list` or `tools/call`.
+4. Ensure your client adheres to standard MCP protocols.
+
+---
+*Note: Public repository contains no wallet private keys or secrets. All interactions use secure SIWE and proxy standards.*
+
