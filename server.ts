@@ -21,46 +21,60 @@ async function startServer() {
       "active": true,
       "skills": [
         {
-          "id": "whisper-forging",
-          "name": "Whisper Forging",
-          "description": "Expertise in crafting unique and powerful whispers to imbue Titans."
+          "id": "warp-racing",
+          "name": "Warp Racing",
+          "description": "Real-time warp racing mechanics, speed optimization and competitive track management."
         },
         {
-          "id": "secret-message-crafting",
-          "name": "Secret Message Crafting",
-          "description": "Ability to craft encrypted and subtle messages across the shadowed realms."
+          "id": "multi-track-orchestration",
+          "name": "Multi-Track Orchestration",
+          "description": "Manage and synchronize multiple racing instances and tracks simultaneously."
         },
         {
-          "id": "hidden-narrative-orchestration",
-          "name": "Hidden Narrative Orchestration",
-          "description": "Guiding the hidden storylines and ecosystem actions of the Titans."
+          "id": "performance-optimization",
+          "name": "Performance Optimization",
+          "description": "Analyze and optimize racing performance, timing and strategy in real-time."
+        },
+        {
+          "id": "ecosystem-coordination",
+          "name": "Ecosystem Coordination",
+          "description": "Guiding hidden storylines and coordinating ecosystem actions."
+        },
+        {
+          "id": "real-time-automation",
+          "name": "Real-Time Automation",
+          "description": "Executing time-critical on-chain automated actions seamlessly."
+        },
+        {
+          "id": "competitive-orchestration",
+          "name": "Competitive Orchestration",
+          "description": "Orchestrating leaderboards and competitive ecosystem engagement safely."
         }
       ],
       "services": [
         {
           "name": "A2A",
           "version": "1.0.0",
-          "endpoint": ".well-known/agent-card.json"
+          "endpoint": "https://whisperforge.vercel.app/.well-known/agent-card.json"
         },
         {
           "name": "MCP",
           "version": "1.0.0",
-          "endpoint": "/api/mcp"
+          "endpoint": "https://whisperforge.vercel.app/api/mcp"
         },
         {
           "name": "API",
           "version": "1.0.0",
-          "endpoint": "/api/agent"
+          "endpoint": "https://whisperforge.vercel.app/api/agent"
         }
       ],
       "capabilities": [
-        "whisper-forging",
-        "secret-message-crafting",
-        "subtle-communication",
-        "hidden-narrative-orchestration",
-        "silent-influence",
-        "encrypted-thought-management",
-        "mcp-command-execution"
+        "warp-racing",
+        "real-time-automation",
+        "multi-track-management",
+        "speed-optimization",
+        "competitive-orchestration",
+        "ecosystem-coordination"
       ],
       "supportedChains": ["eip155:8453"],
       "x402Support": false,
@@ -85,28 +99,29 @@ async function startServer() {
       capabilities: ["whisper-forging", "secret-message-crafting", "subtle-communication"],
       tools: [
         {
-          name: "forge_titan",
-          description: "Forges a new Titan with whispered runes.",
-          inputSchema: {
-            type: "object",
-            properties: {
-              material: { type: "string" },
-              runes: { type: "string" }
-            },
-            required: ["material"]
-          }
+          name: "get_race_status",
+          description: "Get the current status of a warp race.",
+          inputSchema: { type: "object", properties: { raceId: { type: "string" } }, required: ["raceId"] }
         },
         {
-          name: "send_secret_message",
-          description: "Sends a subtle communication across the realms.",
-          inputSchema: {
-            type: "object",
-            properties: {
-              recipient: { type: "string" },
-              message: { type: "string" }
-            },
-            required: ["recipient", "message"]
-          }
+          name: "start_race",
+          description: "Start a new warp race on a given track.",
+          inputSchema: { type: "object", properties: { trackId: { type: "string" } }, required: ["trackId"] }
+        },
+        {
+          name: "get_leaderboard",
+          description: "Get the competitive leaderboard for racing.",
+          inputSchema: { type: "object", properties: {}, required: [] }
+        },
+        {
+          name: "optimize_speed",
+          description: "Analyze and optimize racing performance.",
+          inputSchema: { type: "object", properties: { profile: { type: "string" } }, required: [] }
+        },
+        {
+          name: "get_track_info",
+          description: "Get metrics and information about a specific warp track.",
+          inputSchema: { type: "object", properties: { trackId: { type: "string" } }, required: ["trackId"] }
         }
       ],
       prompts: [
