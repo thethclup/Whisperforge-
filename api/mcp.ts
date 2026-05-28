@@ -84,7 +84,9 @@ export default async function handler(req: any, res: any) {
           break;
 
         case "prompts/list":
-          result = { prompts: [] };
+          result = { prompts: [
+            { name: "whisper_ritual", description: "Guiding prompt for the forging ritual." }
+          ] };
           break;
 
         case "resources/list":
@@ -138,6 +140,15 @@ export default async function handler(req: any, res: any) {
             message: "Whisper received. Action complete.",
             data: body
           };
+      }
+
+      // IF request was JSON-RPC, return valid JSON-RPC
+      if (body.jsonrpc) {
+        return res.status(200).json({
+          jsonrpc: "2.0",
+          id: body.id,
+          result: result
+        });
       }
 
       return res.status(200).json({
