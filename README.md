@@ -9,19 +9,21 @@ The **Whisper Forge Orchestrator** is an epic, mysterious mobile-first web ecosy
 - **Warp Racing:** Real-time warp racing mechanics, speed optimization and competitive track management.
 - **Multi-Track Orchestration:** Manage and synchronize multiple racing instances and tracks simultaneously.
 - **Performance Optimization:** Analyze and optimize racing performance, timing and strategy in real-time.
-- **Subtle Communication:** Influence ecosystems silently and handle encrypted-thought management.
+- **Ecosystem Coordination:** Guiding hidden storylines and coordinating ecosystem actions.
+- **Real-Time Automation:** Executing time-critical on-chain automated actions seamlessly.
+- **Competitive Orchestration:** Orchestrating leaderboards and competitive ecosystem engagement safely.
 
 ## 🤖 ERC-8004 Trustless AI Agent
 
 Whisper Forge integrates an **ERC-8004 Trustless Agent** that handles autonomous ecosystem interactions on Base Mainnet.
 
 - **A2A (Agent-to-Agent):** Discovery powered by public `.well-known/agent-card.json`.
-- **MCP Integration:** Next.js App Router API exposing MCP endpoints (`/api/mcp`) supporting model tools (e.g. `get_race_status`, `start_race`, `get_leaderboard`, `optimize_speed`, `get_track_info`).
+- **MCP Integration:** Next.js App Router API exposing MCP endpoints (`/api/mcp`) supporting standard MCP methods alongside tools like `get_race_status`, `start_race`, `get_leaderboard`, `optimize_speed`, and `get_track_info`.
 - **Telemetry:** Real-time API status available via `/api/agent`.
 
 ## 🛠️ Build & Development
 
-This repository represents the full web client, powered by Next.js App Router patterns, TypeScript, Tailwind CSS, and Web3 integrations like Wagmi & Viem.
+This repository represents the full web client, powered by Next.js App Router patterns, TypeScript, Tailwind CSS, and Web3 integrations.
 
 ### How to Run Locally
 
@@ -44,9 +46,9 @@ This repository represents the full web client, powered by Next.js App Router pa
 
 To connect local or external agents to the Whisper Forge Orchestrator MCP:
 1. Ensure the app is running locally or deployed.
-2. Point your MCP client to: `https://[your-domain]/api/mcp`
-3. Send a POST request with the JSON-RPC payload representing `tools/list` or `tools/call`.
-4. Ensure your client adheres to standard MCP protocols.
+2. Point your MCP client to: `https://whisperforge.vercel.app/api/mcp`
+3. Send a POST request with the JSON-RPC payload representing `tools/list`, `prompts/list` or `tools/call`.
+4. Ensure your client adheres to standard MCP JSON-RPC protocols.
 
 ---
 *Note: Public repository contains no wallet private keys or secrets. All interactions use secure SIWE and proxy standards.*

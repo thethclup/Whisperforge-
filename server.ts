@@ -138,13 +138,77 @@ async function startServer() {
   app.post("/api/mcp", (req, res) => {
     try {
       const body = req.body;
-      const { action, command, params, task } = body;
-
-      const cmd = (action || command || task || "").toLowerCase();
+      const cmd = (body.method || body.action || body.command || body.task || "").toLowerCase();
 
       let result: any = {};
 
+      const TOOLS = [
+        {
+          name: "get_race_status",
+          description: "Get the current status of a warp race.",
+          inputSchema: { type: "object", properties: { raceId: { type: "string" } }, required: ["raceId"] }
+        },
+        {
+          name: "start_race",
+          description: "Start a new warp race on a given track.",
+          inputSchema: { type: "object", properties: { trackId: { type: "string" } }, required: ["trackId"] }
+        },
+        {
+          name: "get_leaderboard",
+          description: "Get the competitive leaderboard for racing.",
+          inputSchema: { type: "object", properties: {}, required: [] }
+        },
+        {
+          name: "optimize_speed",
+          description: "Analyze and optimize racing performance.",
+          inputSchema: { type: "object", properties: { profile: { type: "string" } }, required: [] }
+        },
+        {
+          name: "get_track_info",
+          description: "Get metrics and information about a specific warp track.",
+          inputSchema: { type: "object", properties: { trackId: { type: "string" } }, required: ["trackId"] }
+        }
+      ];
+
       switch (cmd) {
+        case "initialize":
+          result = {
+            protocolVersion: "2024-11-05",
+            capabilities: { tools: {} },
+            serverInfo: {
+              name: "Whisper Forge Orchestrator",
+              version: "1.0.0"
+            }
+          };
+          break;
+
+        case "tools/list":
+          result = { tools: TOOLS };
+          break;
+
+        case "prompts/list":
+          result = { prompts: [
+            { name: "whisper_ritual", description: "Guiding prompt for the forging ritual." }
+          ] };
+          break;
+
+        case "resources/list":
+          result = { resources: [] };
+          break;
+
+        case "tools/call":
+          const toolName = body.params?.name;
+          const args = body.params?.arguments || {};
+          result = {
+            content: [
+              {
+                type: "text",
+                text: `Executed ${toolName} with args: ${JSON.stringify(args)}`
+              }
+            ]
+          };
+          break;
+
         case "status":
         case "ping":
           result = { 
@@ -157,7 +221,7 @@ async function startServer() {
         case "execute":
           result = {
             success: true,
-            executed: params || command,
+            executed: body.params || cmd,
             executedAt: new Date().toISOString(),
             message: "Whisper successfully forged"
           };
@@ -178,6 +242,14 @@ async function startServer() {
             message: "Whisper received",
             data: body
           };
+      }
+
+      if (body.jsonrpc) {
+        return res.json({
+          jsonrpc: "2.0",
+          id: body.id,
+          result: result
+        });
       }
 
       res.json({
