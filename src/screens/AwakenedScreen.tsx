@@ -105,7 +105,7 @@ export default function AwakenedScreen() {
         >
           {isPending ? 'Signing...' : (
              <>
-               <ExternalLink size={16} /> Record on Base Mainnet
+               <ExternalLink size={16} /> Record This Creation on-chain
              </>
           )}
         </button>
