@@ -6,21 +6,57 @@ import TrialsScreen from './screens/TrialsScreen';
 import LeaderboardScreen from './screens/LeaderboardScreen';
 import AwakenedScreen from './screens/AwakenedScreen';
 import { Navbar } from './components/Navbar';
-import { useAccount, useSendTransaction } from 'wagmi';
+import { useAccount, useSendTransaction, useSendCalls, useChainId, useSwitchChain } from 'wagmi';
 import { Sun } from 'lucide-react';
 import { parseEther } from 'viem';
+import { useWalletCapabilities } from './hooks/useWalletCapabilities';
+import { base } from 'wagmi/chains';
+
+const GM_CONTRACT = '0xc35B9997B63B1CE14f8F513f7eddD9a7ABbB33d7' as const;
+const ERC8021_SUFFIX = '0x07626173656170700080218021802180218021802180218021' as const;
 
 export default function App() {
   const { currentScreen } = useGame();
   const { isConnected } = useAccount();
-  const { sendTransaction, isPending } = useSendTransaction();
+  const chainId = useChainId();
+  const { switchChain, isPending: isSwitching } = useSwitchChain();
+  
+  const { supportsBatching } = useWalletCapabilities();
+  const { sendTransaction, isPending: isSendingTx } = useSendTransaction();
+  const { sendCalls, isPending: isSendingCalls } = useSendCalls();
+
+  const isPending = isSendingTx || isSendingCalls || isSwitching;
 
   const sendGMTransaction = () => {
-    sendTransaction({
-      to: '0xc35B9997B63B1CE14f8F513f7eddD9a7ABbB33d7',
-      value: parseEther('0'),
-      data: '0x' // basic transaction
-    });
+    if (chainId !== base.id) {
+      switchChain({ chainId: base.id });
+      return;
+    }
+
+    if (supportsBatching) {
+      sendCalls({
+        calls: [
+          {
+            to: GM_CONTRACT,
+            value: parseEther('0'),
+            data: '0x'
+          }
+        ],
+        capabilities: {
+          dataSuffix: {
+            value: ERC8021_SUFFIX,
+            optional: true
+          }
+        }
+      });
+    } else {
+      // EOA fallback: append default ERC-8021 suffix
+      sendTransaction({
+        to: GM_CONTRACT,
+        value: parseEther('0'),
+        data: ERC8021_SUFFIX
+      });
+    }
   };
 
   const renderScreen = () => {
